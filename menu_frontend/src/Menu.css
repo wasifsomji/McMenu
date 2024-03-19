@@ -1,0 +1,71 @@
+.home {
+    font-family: Arial, sans-serif;
+}
+
+.navbar {
+    padding: 20px 10px; /* Adjust padding to make the bar taller */
+    background-color: #002145; /* McGill official dark blue color */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    height: 50px; /* Adjust logo size */
+    margin-right: 20px;
+}
+
+.nav-links a {
+    color: #BF4B3F;
+    text-decoration: none;
+    margin-left: 20px;
+    font-weight: bold;
+}
+
+.nav-links a:hover {
+    text-decoration: underline;
+}
+
+.header {
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+    font-size: 35px; /* Make the text larger */
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #002145; /* McGill official dark blue color */
+}
+
+
+.header h1 {
+    color: #BF4B3F;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+}
+/* Button styles */
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 10px;
+    font-size: 18px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #BF4B3F;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 9px #999;
+}
+
+.button:hover { background-color: #003366 }
+
+.button:active {
+    background-color: #002145;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
