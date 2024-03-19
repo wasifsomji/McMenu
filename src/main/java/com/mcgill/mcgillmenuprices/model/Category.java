@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "items")
-public class Item {
+@Table(name = "categories")
+public class Category {
       @Id
       @GeneratedValue(strategy = GenerationType.IDENTITY)
       private Long id;
@@ -15,18 +15,12 @@ public class Item {
       @Column(nullable = false)
       private String name;
 
-      @Column(nullable = true, length = 500)
-      private String description;
-
-      @Column(nullable = false)
-      private Double price;
-
       @ManyToOne(fetch = FetchType.LAZY)
       @JoinColumn(name = "restaurant_id")
       private Restaurant restaurant;
-      @ManyToOne(fetch = FetchType.LAZY)
-      @JoinColumn(name = "category_id")
-      private Category category;
+
+      @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, orphanRemoval = true)
+      private List<Item> items;
 
       public Long getId() {
             return id;
@@ -44,22 +38,6 @@ public class Item {
             this.name = name;
       }
 
-      public String getDescription() {
-            return description;
-      }
-
-      public void setDescription(String description) {
-            this.description = description;
-      }
-
-      public Double getPrice() {
-            return price;
-      }
-
-      public void setPrice(Double price) {
-            this.price = price;
-      }
-
       public Restaurant getRestaurant() {
             return restaurant;
       }
@@ -68,11 +46,11 @@ public class Item {
             this.restaurant = restaurant;
       }
 
-      public Category getCategory() {
-            return category;
+      public List<Item> getItems() {
+            return items;
       }
 
-      public void setCategory(Category category) {
-            this.category = category;
+      public void setItems(List<Item> items) {
+            this.items = items;
       }
 }
