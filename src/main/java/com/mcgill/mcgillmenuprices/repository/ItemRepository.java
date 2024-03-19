@@ -11,4 +11,6 @@ import java.util.List;
 public interface ItemRepository extends CrudRepository<Item, Long> {
       // You can define custom query methods here if needed
       List<Item> findByRestaurant(Restaurant restaurant);
+
+      List<Item> findAllByCategoryIdAndRestaurantId(Long categoryId, Long restaurantId);
 }

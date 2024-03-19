@@ -13,7 +13,61 @@ public class Location {
       @Column(nullable = false)
       private String name;
 
-      // Add more fields as needed, such as latitude, longitude, etc.
+      @Column(nullable = false)
+      private String address; // The address of the food place
 
-      // Constructors, getters, setters
+      private double latitude; // The latitude for Google Maps
+      private double longitude; // The longitude for Google Maps
+
+      public Location(Long id, String name, String address, double latitude, double longitude) {
+            this.id = id;
+            this.name = name;
+            this.address = address;
+            this.latitude = latitude;
+            this.longitude = longitude;
+      }
+
+      public Location() {
+
+      }
+
+      public Long getId() {
+            return id;
+      }
+
+      public void setId(Long id) {
+            this.id = id;
+      }
+
+      public String getName() {
+            return name;
+      }
+
+      public void setName(String name) {
+            this.name = name;
+      }
+
+      public String getAddress() {
+            return address;
+      }
+
+      public void setAddress(String address) {
+            this.address = address;
+      }
+
+      public double getLatitude() {
+            return latitude;
+      }
+
+      public void setLatitude(double latitude) {
+            this.latitude = latitude;
+      }
+
+      public double getLongitude() {
+            return longitude;
+      }
+
+      public void setLongitude(double longitude) {
+            this.longitude = longitude;
+      }
 }

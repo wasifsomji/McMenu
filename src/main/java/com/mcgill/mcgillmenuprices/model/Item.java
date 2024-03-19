@@ -8,6 +8,14 @@ import java.util.List;
 @Entity
 @Table(name = "items")
 public class Item {
+
+      public enum MealType {
+            BREAKFAST,
+            LUNCH,
+            DINNER,
+            DESSERT,
+            SNACK
+      }
       @Id
       @GeneratedValue(strategy = GenerationType.IDENTITY)
       private Long id;
@@ -21,12 +29,29 @@ public class Item {
       @Column(nullable = false)
       private Double price;
 
+      @Enumerated(EnumType.STRING)
+      private MealType mealType;
+
       @ManyToOne(fetch = FetchType.LAZY)
       @JoinColumn(name = "restaurant_id")
       private Restaurant restaurant;
       @ManyToOne(fetch = FetchType.LAZY)
       @JoinColumn(name = "category_id")
       private Category category;
+
+      public Item(Long id, String name, String description, Double price, MealType mealType, Restaurant restaurant, Category category) {
+            this.id = id;
+            this.name = name;
+            this.description = description;
+            this.price = price;
+            this.mealType = mealType;
+            this.restaurant = restaurant;
+            this.category = category;
+      }
+
+      public Item() {
+
+      }
 
       public Long getId() {
             return id;
@@ -75,4 +100,13 @@ public class Item {
       public void setCategory(Category category) {
             this.category = category;
       }
+
+      public MealType getMealType() {
+            return mealType;
+      }
+
+      public void setMealType(MealType mealType) {
+            this.mealType = mealType;
+      }
+
 }

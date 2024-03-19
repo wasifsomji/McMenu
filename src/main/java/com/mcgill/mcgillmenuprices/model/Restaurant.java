@@ -31,16 +31,12 @@ public class Restaurant {
       @OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL, orphanRemoval = true)
       private List<Category> categories;
 
-      @Column(nullable = false)
-      private int rating; // Rating field ranging from 1 to 5
-
-      public Restaurant(Long id, String name, List<Location> locations, List<Item> menu, List<Category> categories, int rating) {
+      public Restaurant(Long id, String name, List<Location> locations, List<Item> menu, List<Category> categories) {
             this.id = id;
             this.name = name;
             this.locations = locations;
             this.menu = menu;
             this.categories = categories;
-            this.rating = rating;
       }
 
       public Restaurant() {
@@ -87,11 +83,4 @@ public class Restaurant {
             this.categories = categories;
       }
 
-      public int getRating() {
-            return rating;
-      }
-
-      public void setRating(int rating) {
-            this.rating = rating;
-      }
 }

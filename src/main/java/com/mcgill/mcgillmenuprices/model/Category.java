@@ -22,6 +22,16 @@ public class Category {
       @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, orphanRemoval = true)
       private List<Item> items;
 
+      public Category(Long id, String name, Restaurant restaurant, List<Item> items) {
+            this.id = id;
+            this.name = name;
+            this.restaurant = restaurant;
+            this.items = items;
+      }
+
+      public Category() {
+      }
+
       public Long getId() {
             return id;
       }
