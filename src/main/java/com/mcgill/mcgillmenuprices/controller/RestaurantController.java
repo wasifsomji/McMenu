@@ -13,14 +13,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/restaurants")
 public class RestaurantController {
-      private RestaurantService restaurantService;
+      private final RestaurantService restaurantService;
 
       @Autowired
       public RestaurantController(RestaurantService restaurantService) {
             this.restaurantService = restaurantService;
       }
 
-      @GetMapping
+      @GetMapping("/name")
       public ResponseEntity<RestaurantResponseDTO> getRestaurantByName(String restaurantName) {
             RestaurantResponseDTO restaurant = restaurantService.getRestaurantByName(restaurantName);
             return ResponseEntity.ok(restaurant);
