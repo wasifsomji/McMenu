@@ -14,5 +14,4 @@ import java.util.List;
 public interface RestaurantRepository extends CrudRepository<Restaurant, Long> {
       // You can define custom query methods here if needed
       Restaurant findByName(String name);
-      List<Restaurant> findByLocations(List<Location> locations);
 }

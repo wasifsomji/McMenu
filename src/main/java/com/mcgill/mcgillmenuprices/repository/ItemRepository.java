@@ -10,7 +10,6 @@ import java.util.List;
 @Repository
 public interface ItemRepository extends CrudRepository<Item, Long> {
       // You can define custom query methods here if needed
-      List<Item> findByRestaurant(Restaurant restaurant);
 
       List<Item> findAllByCategoryIdAndRestaurantId(Long categoryId, Long restaurantId);
 
@@ -19,4 +18,12 @@ public interface ItemRepository extends CrudRepository<Item, Long> {
       List<Item> findAllByPrice(Double price);
 
       List<Item> findAllByPriceBetween(Double minPrice, Double maxPrice);
+
+      List<Item> findAllByRestaurantIdAndCategoryIdAndPriceBetween(
+              Long restaurantId,
+              Long categoryId,
+              Double minPrice,
+              Double maxPrice
+      );
+
 }

@@ -6,5 +6,5 @@ import java.util.List;
 public class RestaurantResponseDTO {
       private Long id;
       private String name;
-      private List<LocationResponseDTO> locations = new ArrayList<>();
+      private final List<LocationResponseDTO> locations = new ArrayList<>();
 }

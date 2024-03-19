@@ -50,4 +50,11 @@ public class ItemService {
                     .map(item -> modelMapper.map(item, ItemDTO.class))
                     .collect(Collectors.toList());
       }
+
+      public List<ItemDTO> getItemsByRestaurantAndCategoryAndPriceRange(Long restaurantId, Long categoryId, Double minPrice, Double maxPrice) {
+            List<Item> items = itemRepository.findAllByRestaurantIdAndCategoryIdAndPriceBetween(restaurantId, categoryId, minPrice, maxPrice);
+            return items.stream()
+                    .map(item -> modelMapper.map(item, ItemDTO.class))
+                    .collect(Collectors.toList());
+      }
 }
