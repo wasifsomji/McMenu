@@ -1,5 +1,6 @@
 package com.mcgill.mcgillmenuprices.repository;
 
+import com.mcgill.mcgillmenuprices.model.Location;
 import com.mcgill.mcgillmenuprices.model.Restaurant;
 import jakarta.persistence.Column;
 import org.springframework.data.jdbc.repository.query.Query;
@@ -13,5 +14,5 @@ import java.util.List;
 public interface RestaurantRepository extends CrudRepository<Restaurant, Long> {
       // You can define custom query methods here if needed
       Restaurant findByName(String name);
-      List<Restaurant> findByLocation(String location);
+      List<Restaurant> findByLocations(List<Location> locations);
 }
