@@ -3,6 +3,7 @@ package com.mcgill.mcgillmenuprices.model;
 import jakarta.persistence.*;
 import com.mcgill.mcgillmenuprices.model.Item;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -26,9 +27,19 @@ public class Restaurant {
       private List<Location> locations;
 
       @OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL, orphanRemoval = true)
-      private List<Item> menu;
+      private List<Item> menu = new ArrayList<>();
 
-      @OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL, orphanRemoval = true)
+      public void addMenuItem(Item item) {
+            menu.add(item);
+            item.setRestaurant(this);
+      }
+
+      public void removeMenuItem(Item item) {
+            menu.remove(item);
+            item.setRestaurant(null);
+      }
+
+      @OneToMany(mappedBy = "restaurant", cascade = CascadeType .ALL, orphanRemoval = true)
       private List<Category> categories;
 
       public Restaurant(Long id, String name, List<Location> locations, List<Item> menu, List<Category> categories) {

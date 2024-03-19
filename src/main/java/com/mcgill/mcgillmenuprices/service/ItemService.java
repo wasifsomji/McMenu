@@ -29,4 +29,25 @@ public class ItemService {
                     .map(item -> modelMapper.map(item, ItemDTO.class))
                     .collect(Collectors.toList());
       }
+
+      public List<ItemDTO> getItemsByRestaurant(Long restaurantID) {
+            List<Item> items = itemRepository.findAllByRestaurantId(restaurantID);
+            return items.stream()
+                    .map(item -> modelMapper.map(item, ItemDTO.class))
+                    .collect(Collectors.toList());
+      }
+
+      public List<ItemDTO> getItemsByPriceRange(Double minPrice, Double maxPrice) {
+            List<Item> items = itemRepository.findAllByPriceBetween(minPrice, maxPrice);
+            return items.stream()
+                    .map(item -> modelMapper.map(item, ItemDTO.class))
+                    .collect(Collectors.toList());
+      }
+
+      public List<ItemDTO> getItemsByPrice(Double price) {
+            List<Item> items = itemRepository.findAllByPrice(price);
+            return items.stream()
+                    .map(item -> modelMapper.map(item, ItemDTO.class))
+                    .collect(Collectors.toList());
+      }
 }

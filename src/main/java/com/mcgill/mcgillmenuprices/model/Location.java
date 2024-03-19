@@ -2,6 +2,9 @@ package com.mcgill.mcgillmenuprices.model;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "locations")
 public class Location {
@@ -9,6 +12,9 @@ public class Location {
       @Id
       @GeneratedValue(strategy = GenerationType.IDENTITY)
       private Long id;
+
+      @ManyToMany(mappedBy = "restaurant_locations")
+      private List<Restaurant> restaurants = new ArrayList<>();
 
       @Column(nullable = false)
       private String name;
@@ -19,8 +25,7 @@ public class Location {
       private double latitude; // The latitude for Google Maps
       private double longitude; // The longitude for Google Maps
 
-      public Location(Long id, String name, String address, double latitude, double longitude) {
-            this.id = id;
+      public Location(String name, String address, double latitude, double longitude) {
             this.name = name;
             this.address = address;
             this.latitude = latitude;
@@ -30,6 +35,7 @@ public class Location {
       public Location() {
 
       }
+
 
       public Long getId() {
             return id;
@@ -69,5 +75,14 @@ public class Location {
 
       public void setLongitude(double longitude) {
             this.longitude = longitude;
+      }
+
+      // Getters and setters...
+      public List<Restaurant> getRestaurants() {
+            return restaurants;
+      }
+
+      public void setRestaurants(List<Restaurant> restaurants) {
+            this.restaurants = restaurants;
       }
 }

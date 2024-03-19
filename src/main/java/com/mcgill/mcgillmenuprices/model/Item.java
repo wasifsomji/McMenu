@@ -32,12 +32,13 @@ public class Item {
       @Enumerated(EnumType.STRING)
       private MealType mealType;
 
-      @ManyToOne(fetch = FetchType.LAZY)
+      @ManyToOne
       @JoinColumn(name = "restaurant_id")
       private Restaurant restaurant;
-      @ManyToOne(fetch = FetchType.LAZY)
+      @ManyToOne
       @JoinColumn(name = "category_id")
       private Category category;
+
 
       public Item(Long id, String name, String description, Double price, MealType mealType, Restaurant restaurant, Category category) {
             this.id = id;

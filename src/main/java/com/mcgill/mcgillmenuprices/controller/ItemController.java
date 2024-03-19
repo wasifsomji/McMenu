@@ -29,4 +29,26 @@ public class ItemController {
             List<ItemDTO> items = itemService.getItemsByCategoryAndRestaurant(categoryId, restaurantId);
             return ResponseEntity.ok(items);
       }
+
+      @GetMapping
+      public ResponseEntity<List<ItemDTO>> getItemsByRestaurant(
+              @RequestParam Long restaurantID) {
+            List<ItemDTO> items = itemService.getItemsByRestaurant(restaurantID);
+            return ResponseEntity.ok(items);
+      }
+
+      @GetMapping
+      public ResponseEntity<List<ItemDTO>> getItemsInPriceRange(
+              @RequestParam Double minPrice,
+              @RequestParam Double maxPrice) {
+            List<ItemDTO> items = itemService.getItemsByPriceRange(minPrice, maxPrice);
+            return ResponseEntity.ok(items);
+      }
+
+      @GetMapping
+      public ResponseEntity<List<ItemDTO>> getItemsByPrice(
+              @RequestParam Double price) {
+            List<ItemDTO> items = itemService.getItemsByPrice(price);
+            return ResponseEntity.ok(items);
+      }
 }

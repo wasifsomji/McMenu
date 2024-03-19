@@ -13,4 +13,10 @@ public interface ItemRepository extends CrudRepository<Item, Long> {
       List<Item> findByRestaurant(Restaurant restaurant);
 
       List<Item> findAllByCategoryIdAndRestaurantId(Long categoryId, Long restaurantId);
+
+      List<Item> findAllByRestaurantId(Long restaurantID);
+
+      List<Item> findAllByPrice(Double price);
+
+      List<Item> findAllByPriceBetween(Double minPrice, Double maxPrice);
 }

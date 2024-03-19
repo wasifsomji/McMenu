@@ -20,7 +20,17 @@ public class Category {
       private Restaurant restaurant;
 
       @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, orphanRemoval = true)
-      private List<Item> items;
+      private List<Item> items = new ArrayList<>();
+
+      public void addItem(Item item) {
+            items.add(item);
+            item.setCategory(this);
+      }
+
+      public void removeItem(Item item) {
+            items.remove(item);
+            item.setCategory(null);
+      }
 
       public Category(Long id, String name, Restaurant restaurant, List<Item> items) {
             this.id = id;
